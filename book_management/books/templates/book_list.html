@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Book List</h1>
+    <h1>Book List</h1>
+    <form method="GET">
+        <input type="text" name="q" placeholder="Search by title or author">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }}</a> by {{ book.author }} (Published: {{ book.published_date }})
+            </li>
+        {% empty %}
+            <li>No books available</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'book_new' %}">Add a New Book</a>
+</body>
+</html>
